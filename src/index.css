@@ -1,0 +1,3 @@
+#sidenav fieldset, #sidenav fieldset > legend {
+    all: revert;
+}
