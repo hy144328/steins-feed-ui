@@ -17,14 +17,14 @@ class TagsNav extends React.Component {
         const tag_cmpnts = [];
         for (const tag_it of ls_tags) {
             tag_cmpnts.push(
-                <label>
-                    <input type="checkbox" name="tag" value={tag_it} />
-                    {tag_it}
-                </label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
+                    <label class="form-check-label" for={"sidenav-tag-" + tag_it}>
+                        {tag_it}
+                    </label>
+                </div>
             );
-            tag_cmpnts.push(<br />);
         }
-        tag_cmpnts.pop();
 
         const fieldset_cmpnt = (
             <fieldset id="input_tag">
