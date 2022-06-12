@@ -7,6 +7,32 @@ root.render(<p>Hello Vera</p>)
 
 const sidenav = ReactDOM.createRoot(document.getElementById("sidenav"));
 
+class NavCheckBox extends React.Component {
+    render() {
+        return (
+            <div className="form-check">
+                <input type="checkbox" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} />
+                <label className="form-check-label" htmlFor={this.props.id}>
+                    {this.props.value}
+                </label>
+            </div>
+        );
+    }
+}
+
+class NavRadioButton extends React.Component {
+    render() {
+        return (
+            <div className="form-check">
+                <input type="radio" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} checked />
+                <label className="form-check-label" htmlFor={this.props.id}>
+                    {this.props.value}
+                </label>
+            </div>
+        );
+    }
+}
+
 // Tags.
 const ls_tags = [
     "activism",
@@ -19,12 +45,7 @@ class TagsNav extends React.Component {
         const tag_cmpnts = [];
         for (const tag_it of ls_tags) {
             tag_cmpnts.push(
-                <div className="form-check">
-                    <input type="checkbox" className="form-check-input" name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
-                    <label className="form-check-label" htmlFor={"sidenav-tag-" + tag_it}>
-                        {tag_it}
-                    </label>
-                </div>
+                <NavCheckBox name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
             );
         }
 
@@ -36,19 +57,6 @@ class TagsNav extends React.Component {
         );
 
         return fieldset_cmpnt;
-    }
-}
-
-class NavCheckBox extends React.Component {
-    render() {
-        return (
-            <div className="form-check">
-                <input type="checkbox" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} />
-                <label className="form-check-label" htmlFor={this.props.id}>
-                    {this.props.value}
-                </label>
-            </div>
-        );
     }
 }
 
@@ -91,12 +99,7 @@ class WallNav extends React.Component {
         const wall_cmpnts = [];
         for (const wall_it of ls_wall) {
             wall_cmpnts.push(
-                <div className="form-check">
-                    <input type="radio" className="form-check-input" name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked />
-                    <label className="form-check-label" htmlFor={"sidenav-wall-" + wall_it}>
-                        {wall_it}
-                    </label>
-                </div>
+                <NavRadioButton name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked />
             );
         }
 
