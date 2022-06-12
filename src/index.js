@@ -53,12 +53,26 @@ class TagsNav extends React.Component {
         };
 
         this.onCheck = this.onCheck.bind(this);
+        this.onCheckAll = this.onCheckAll.bind(this);
     }
 
     onCheck(event) {
         const checkedList = this.state.checkedList;
         checkedList[event.target.value] = !checkedList[event.target.value];
         const checkedAll = Object.values(checkedList).every(Boolean);
+
+        this.setState({
+            checkedList: checkedList,
+            checkedAll: checkedAll
+        });
+    }
+
+    onCheckAll(event) {
+        const checkedAll = !this.state.checkedAll;
+        const checkedList = this.state.checkedList;
+        for (const check_it in checkedList) {
+            checkedList[check_it] = checkedAll;
+        }
 
         this.setState({
             checkedList: checkedList,
@@ -76,9 +90,9 @@ class TagsNav extends React.Component {
                 value = "ALL"
                 id = "sidenav-tag-"
                 checked = {this.state.checkedAll}
+                onChange = {this.onCheckAll}
             />
         );
-        console.log(tag_cmpnts)
 
         for (const tag_it in checkedList) {
             tag_cmpnts.push(
