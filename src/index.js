@@ -129,6 +129,33 @@ class LangsNav extends React.Component {
             },
             checkedAll: true
         };
+
+        this.onCheck = this.onCheck.bind(this);
+        this.onCheckAll = this.onCheckAll.bind(this);
+    }
+
+    onCheck(event) {
+        const checkedList = this.state.checkedList;
+        checkedList[event.target.value] = !checkedList[event.target.value];
+        const checkedAll = Object.values(checkedList).every(Boolean);
+
+        this.setState({
+            checkedList: checkedList,
+            checkedAll: checkedAll
+        });
+    }
+
+    onCheckAll(event) {
+        const checkedAll = !this.state.checkedAll;
+        const checkedList = this.state.checkedList;
+        for (const check_it in checkedList) {
+            checkedList[check_it] = checkedAll;
+        }
+
+        this.setState({
+            checkedList: checkedList,
+            checkedAll: checkedAll
+        });
     }
 
     render() {
@@ -140,6 +167,8 @@ class LangsNav extends React.Component {
                 key = {null}
                 value = "ALL"
                 id = "sidenav-lang-"
+                checked = {this.state.checkedAll}
+                onChange = {this.onCheckAll}
             />
         );
 
@@ -150,6 +179,8 @@ class LangsNav extends React.Component {
                     name = "lang"
                     value = {lang_it}
                     id = {"sidenav-lang-" + lang_it}
+                    checked = {checkedList[lang_it]}
+                    onChange = {this.onCheck}
                 />
             );
         }
