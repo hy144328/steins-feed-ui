@@ -45,7 +45,7 @@ class TagsNav extends React.Component {
         const tag_cmpnts = [];
         for (const tag_it of ls_tags) {
             tag_cmpnts.push(
-                <NavCheckBox name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
+                <NavCheckBox key={tag_it} name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
             );
         }
 
@@ -71,7 +71,7 @@ class LangsNav extends React.Component {
         const lang_cmpnts = [];
         for (const lang_it of ls_langs) {
             lang_cmpnts.push(
-                <NavCheckBox name="lang" value={lang_it} id={"sidenav-lang-" + lang_it} />
+                <NavCheckBox key={lang_it} name="lang" value={lang_it} id={"sidenav-lang-" + lang_it} />
             );
         }
 
@@ -99,7 +99,7 @@ class WallNav extends React.Component {
         const wall_cmpnts = [];
         for (const wall_it of ls_wall) {
             wall_cmpnts.push(
-                <NavRadioButton name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked={wall_it === "Classic"} />
+                <NavRadioButton key={wall_it} name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked={wall_it === "Classic"} />
             );
         }
 
