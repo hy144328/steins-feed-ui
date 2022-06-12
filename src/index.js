@@ -19,9 +19,9 @@ class TagsNav extends React.Component {
         const tag_cmpnts = [];
         for (const tag_it of ls_tags) {
             tag_cmpnts.push(
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
-                    <label class="form-check-label" for={"sidenav-tag-" + tag_it}>
+                <div className="form-check">
+                    <input type="checkbox" className="form-check-input" name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
+                    <label className="form-check-label" htmlFor={"sidenav-tag-" + tag_it}>
                         {tag_it}
                     </label>
                 </div>
@@ -50,9 +50,9 @@ class LangsNav extends React.Component {
         const lang_cmpnts = [];
         for (const lang_it of ls_langs) {
             lang_cmpnts.push(
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="lang" value={lang_it} id={"sidenav-lang-" + lang_it} />
-                    <label class="form-check-label" for={"sidenav-lang-" + lang_it}>
+                <div className="form-check">
+                    <input type="checkbox" className="form-check-input" name="lang" value={lang_it} id={"sidenav-lang-" + lang_it} />
+                    <label className="form-check-label" htmlFor={"sidenav-lang-" + lang_it}>
                         {lang_it}
                     </label>
                 </div>
