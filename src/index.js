@@ -119,17 +119,38 @@ class TagsNav extends React.Component {
 }
 
 // Languages.
-const ls_langs = [
-    "English",
-    "German"
-];
-
 class LangsNav extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            checkedList: {
+                "English": true,
+                "German": true
+            },
+            checkedAll: true
+        };
+    }
+
     render() {
+        const checkedList = this.state.checkedList;
         const lang_cmpnts = [];
-        for (const lang_it of ls_langs) {
+
+        lang_cmpnts.push(
+            <NavCheckBox
+                key = {null}
+                value = "ALL"
+                id = "sidenav-lang-"
+            />
+        );
+
+        for (const lang_it in checkedList) {
             lang_cmpnts.push(
-                <NavCheckBox key={lang_it} name="lang" value={lang_it} id={"sidenav-lang-" + lang_it} />
+                <NavCheckBox
+                    key = {lang_it}
+                    name = "lang"
+                    value = {lang_it}
+                    id = {"sidenav-lang-" + lang_it}
+                />
             );
         }
 
