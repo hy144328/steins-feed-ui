@@ -11,7 +11,7 @@ class NavCheckBox extends React.Component {
     render() {
         return (
             <div className="form-check">
-                <input type="checkbox" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} />
+                <input type="checkbox" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} defaultChecked={this.props.checked} />
                 <label className="form-check-label" htmlFor={this.props.id}>
                     {this.props.value}
                 </label>
@@ -24,7 +24,7 @@ class NavRadioButton extends React.Component {
     render() {
         return (
             <div className="form-check">
-                <input type="radio" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} checked />
+                <input type="radio" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} defaultChecked={this.props.checked} />
                 <label className="form-check-label" htmlFor={this.props.id}>
                     {this.props.value}
                 </label>
@@ -99,7 +99,7 @@ class WallNav extends React.Component {
         const wall_cmpnts = [];
         for (const wall_it of ls_wall) {
             wall_cmpnts.push(
-                <NavRadioButton name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked />
+                <NavRadioButton name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked={wall_it === "Classic"} />
             );
         }
 
