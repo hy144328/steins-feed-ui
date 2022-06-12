@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Form from "react-bootstrap/Form";
 import "./index.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -10,12 +11,14 @@ const sidenav = ReactDOM.createRoot(document.getElementById("sidenav"));
 class NavCheckBox extends React.Component {
     render() {
         return (
-            <div className="form-check">
-                <input type="checkbox" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} defaultChecked={this.props.checked} />
-                <label className="form-check-label" htmlFor={this.props.id}>
-                    {this.props.value}
-                </label>
-            </div>
+            <Form.Check
+                type = "checkbox"
+                name = {this.props.name}
+                value = {this.props.value}
+                id = {this.props.id}
+                checked = {this.props.checked}
+                label = {this.props.value}
+            />
         );
     }
 }
@@ -23,12 +26,14 @@ class NavCheckBox extends React.Component {
 class NavRadioButton extends React.Component {
     render() {
         return (
-            <div className="form-check">
-                <input type="radio" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} defaultChecked={this.props.checked} />
-                <label className="form-check-label" htmlFor={this.props.id}>
-                    {this.props.value}
-                </label>
-            </div>
+            <Form.Check
+                type = "radio"
+                name = {this.props.name}
+                value = {this.props.value}
+                id = {this.props.id}
+                checked = {this.props.checked}
+                label = {this.props.value}
+            />
         );
     }
 }
