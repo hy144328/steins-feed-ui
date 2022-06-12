@@ -70,9 +70,43 @@ class LangsNav extends React.Component {
     }
 }
 
+// Wall.
+const ls_wall = [
+    "Classic",
+    "Random",
+    "Magic",
+    "Surprise"
+];
+
+class WallNav extends React.Component {
+    render() {
+        const wall_cmpnts = [];
+        for (const wall_it of ls_wall) {
+            wall_cmpnts.push(
+                <div className="form-check">
+                    <input type="radio" className="form-check-input" name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked />
+                    <label className="form-check-label" htmlFor={"sidenav-wall-" + wall_it}>
+                        {wall_it}
+                    </label>
+                </div>
+            );
+        }
+
+        const fieldset_cmpnt = (
+            <fieldset id="input_wall">
+                <legend>Walls</legend>
+                {wall_cmpnts}
+            </fieldset>
+        );
+
+        return fieldset_cmpnt;
+    }
+}
+
 sidenav.render(
     <form>
         <TagsNav />
         <LangsNav />
+        <WallNav />
     </form>
 );
