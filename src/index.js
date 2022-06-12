@@ -187,7 +187,7 @@ class LangsNav extends React.Component {
 
         const fieldset_cmpnt = (
             <fieldset id="input_lang">
-                <legend>Langs</legend>
+                <legend>Languages</legend>
                 {lang_cmpnts}
             </fieldset>
         );
@@ -215,7 +215,7 @@ class WallNav extends React.Component {
 
         const fieldset_cmpnt = (
             <fieldset id="input_wall">
-                <legend>Walls</legend>
+                <legend>Wall</legend>
                 {wall_cmpnts}
             </fieldset>
         );
