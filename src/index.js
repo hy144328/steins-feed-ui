@@ -16,8 +16,9 @@ class NavCheckBox extends React.Component {
                 name = {this.props.name}
                 value = {this.props.value}
                 id = {this.props.id}
-                checked = {this.props.checked}
                 label = {this.props.value}
+                checked = {this.props.checked}
+                onChange = {this.props.onChange}
             />
         );
     }
@@ -31,26 +32,64 @@ class NavRadioButton extends React.Component {
                 name = {this.props.name}
                 value = {this.props.value}
                 id = {this.props.id}
-                checked = {this.props.checked}
                 label = {this.props.value}
+                checked = {this.props.checked}
             />
         );
     }
 }
 
 // Tags.
-const ls_tags = [
-    "activism",
-    "business",
-    "cambridge"
-];
-
 class TagsNav extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            checkedList: {
+                "activism": false,
+                "business": false,
+                "cambridge": false
+            },
+            checkedAll: false
+        };
+
+        this.onCheck = this.onCheck.bind(this);
+    }
+
+    onCheck(event) {
+        const checkedList = this.state.checkedList;
+        checkedList[event.target.value] = !checkedList[event.target.value];
+        const checkedAll = Object.values(checkedList).every(Boolean);
+
+        this.setState({
+            checkedList: checkedList,
+            checkedAll: checkedAll
+        });
+    }
+
     render() {
+        const checkedList = this.state.checkedList;
         const tag_cmpnts = [];
-        for (const tag_it of ls_tags) {
+
+        tag_cmpnts.push(
+            <NavCheckBox
+                key = {null}
+                value = "ALL"
+                id = "sidenav-tag-"
+                checked = {this.state.checkedAll}
+            />
+        );
+        console.log(tag_cmpnts)
+
+        for (const tag_it in checkedList) {
             tag_cmpnts.push(
-                <NavCheckBox key={tag_it} name="tag" value={tag_it} id={"sidenav-tag-" + tag_it} />
+                <NavCheckBox
+                    key = {tag_it}
+                    name = "tag"
+                    value = {tag_it}
+                    id = {"sidenav-tag-" + tag_it}
+                    checked = {checkedList[tag_it]}
+                    onChange = {this.onCheck}
+                />
             );
         }
 
