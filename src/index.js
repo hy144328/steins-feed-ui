@@ -39,6 +39,30 @@ class NavRadioButton extends React.Component {
     }
 }
 
+function onCheck(event) {
+    const checkedList = this.state.checkedList;
+    checkedList[event.target.value] = !checkedList[event.target.value];
+    const checkedAll = Object.values(checkedList).every(Boolean);
+
+    this.setState({
+        checkedList: checkedList,
+        checkedAll: checkedAll
+    });
+}
+
+function onCheckAll(event) {
+    const checkedAll = !this.state.checkedAll;
+    const checkedList = this.state.checkedList;
+    for (const check_it in checkedList) {
+        checkedList[check_it] = checkedAll;
+    }
+
+    this.setState({
+        checkedList: checkedList,
+        checkedAll: checkedAll
+    });
+}
+
 // Tags.
 class TagsNav extends React.Component {
     constructor(props) {
@@ -52,32 +76,8 @@ class TagsNav extends React.Component {
             checkedAll: false
         };
 
-        this.onCheck = this.onCheck.bind(this);
-        this.onCheckAll = this.onCheckAll.bind(this);
-    }
-
-    onCheck(event) {
-        const checkedList = this.state.checkedList;
-        checkedList[event.target.value] = !checkedList[event.target.value];
-        const checkedAll = Object.values(checkedList).every(Boolean);
-
-        this.setState({
-            checkedList: checkedList,
-            checkedAll: checkedAll
-        });
-    }
-
-    onCheckAll(event) {
-        const checkedAll = !this.state.checkedAll;
-        const checkedList = this.state.checkedList;
-        for (const check_it in checkedList) {
-            checkedList[check_it] = checkedAll;
-        }
-
-        this.setState({
-            checkedList: checkedList,
-            checkedAll: checkedAll
-        });
+        this.onCheck = onCheck.bind(this);
+        this.onCheckAll = onCheckAll.bind(this);
     }
 
     render() {
@@ -130,32 +130,8 @@ class LangsNav extends React.Component {
             checkedAll: true
         };
 
-        this.onCheck = this.onCheck.bind(this);
-        this.onCheckAll = this.onCheckAll.bind(this);
-    }
-
-    onCheck(event) {
-        const checkedList = this.state.checkedList;
-        checkedList[event.target.value] = !checkedList[event.target.value];
-        const checkedAll = Object.values(checkedList).every(Boolean);
-
-        this.setState({
-            checkedList: checkedList,
-            checkedAll: checkedAll
-        });
-    }
-
-    onCheckAll(event) {
-        const checkedAll = !this.state.checkedAll;
-        const checkedList = this.state.checkedList;
-        for (const check_it in checkedList) {
-            checkedList[check_it] = checkedAll;
-        }
-
-        this.setState({
-            checkedList: checkedList,
-            checkedAll: checkedAll
-        });
+        this.onCheck = onCheck.bind(this);
+        this.onCheckAll = onCheckAll.bind(this);
     }
 
     render() {
