@@ -39,6 +39,19 @@ class TagsNav extends React.Component {
     }
 }
 
+class NavCheckBox extends React.Component {
+    render() {
+        return (
+            <div className="form-check">
+                <input type="checkbox" className="form-check-input" name={this.props.name} value={this.props.value} id={this.props.id} />
+                <label className="form-check-label" htmlFor={this.props.id}>
+                    {this.props.value}
+                </label>
+            </div>
+        );
+    }
+}
+
 // Languages.
 const ls_langs = [
     "English",
@@ -50,12 +63,7 @@ class LangsNav extends React.Component {
         const lang_cmpnts = [];
         for (const lang_it of ls_langs) {
             lang_cmpnts.push(
-                <div className="form-check">
-                    <input type="checkbox" className="form-check-input" name="lang" value={lang_it} id={"sidenav-lang-" + lang_it} />
-                    <label className="form-check-label" htmlFor={"sidenav-lang-" + lang_it}>
-                        {lang_it}
-                    </label>
-                </div>
+                <NavCheckBox name="lang" value={lang_it} id={"sidenav-lang-" + lang_it} />
             );
         }
 
