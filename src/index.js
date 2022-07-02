@@ -96,12 +96,13 @@ class ItemWall extends React.Component {
     render() {
         const item_cmpnts = [];
         item_cmpnts.push(
-            <hr />
+            <hr key="hr_0" />
         );
 
         for (const item_it of articles) {
             item_cmpnts.push(
                 <Item
+                    key = {item_it.id}
                     item_id = {item_it.id}
                     item_title = {item_it.title}
                     item_link = {item_it.link}
@@ -112,7 +113,7 @@ class ItemWall extends React.Component {
                 />
             );
             item_cmpnts.push(
-                <hr />
+                <hr key={"hr_" + item_it.id} />
             );
         }
 
