@@ -95,6 +95,10 @@ class Item extends React.Component {
 class ItemWall extends React.Component {
     render() {
         const item_cmpnts = [];
+        item_cmpnts.push(
+            <hr />
+        );
+
         for (const item_it of articles) {
             item_cmpnts.push(
                 <Item
@@ -106,6 +110,9 @@ class ItemWall extends React.Component {
                     feed_id = {item_it.feed.id}
                     feed_title = {item_it.feed.title}
                 />
+            );
+            item_cmpnts.push(
+                <hr />
             );
         }
 
@@ -136,6 +143,40 @@ const articles = [
             },
         ],
         "summary": "Nach dem Abgang von Sadio Mané ist die Freude über die Bekanntgabe der Vertragsverlängerung von Superstar Mohamed Salah in Liverpool groß - auch bei Trainer Jürgen Klopp, was dem britischen „Mirror“ sauer aufstößt."
+    },
+    {
+        "id": 5462537,
+        "title": "Erster Auftritt nach fünf Jahren: Adele kehrt auf die Bühne zurück",
+        "link": "https://www.spiegel.de/kultur/musik/erster-auftritt-nach-fuenf-jahren-adele-kehrt-auf-die-buehne-zurueck-a-f7f3ec35-ad8f-41aa-b71d-92646d3d8977#ref=rss",
+        "feed": {
+            "id": 636,
+            "title": "Spiegel"
+        },
+        "published": "2022-07-02 12:58:16 GMT",
+        "tags": [
+            {
+                "id": 2,
+                "name": "magazines"
+            },
+        ],
+        "summary": "Im Londoner Hyde Park hat Adele den ersten Auftritt nach langer Pause hinter sich gebracht, Kritiker äußern sich begeistert. Am Samstag folgt ein weiteres Konzert, eine Tour ist aber nicht geplant."
+    },
+    {
+        "id": 5462491,
+        "title": "Großbritannien - Formel 1: Großer Preis von Silverstone im Livestream schauen",
+        "link": "https://www.focus.de/kultur/kino_tv/grossbritannien-formel-1-im-free-tv-und-livestream-grosser-preis-von-silverstone-qualifying_id_108266652.html",
+        "feed": {
+            "id": 247,
+            "title": "FOCUS Kultur"
+        },
+        "published": "2022-07-02 12:56:54 GMT",
+        "tags": [
+            {
+                "id": 2,
+                "name": "magazines"
+            },
+        ],
+        "summary": "Diese Woche trifft sich der Formel 1-Zirkus in Großbritannien. Am 3. Juli gastiert die Formel 1 in Silverstone – und wer im TV live dabei sein will, hat beste Chancen: Der Große Preis von Großbritannien wird auch im Free-TV bei RTL übertragen. Heute findet das 3. Training und Qualifying statt."
     }
 ]
 
