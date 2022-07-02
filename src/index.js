@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import "./index.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<p>Hello Vera</p>)
 
 const sidenav = ReactDOM.createRoot(document.getElementById("sidenav"));
 
@@ -62,6 +61,66 @@ function onCheckAll(event) {
         checkedAll: checkedAll
     });
 }
+
+// Articles.
+const articles = [
+    {
+        "id": 5462487,
+        "title": "„Besonderer Leckerbissen“ - Klopps Kommentare zu Salahs Vertragsverlängerung hinterlassen bitteren Beigeschmack",
+        "link": "https://www.focus.de/sport/fussball/premierleague/besonderer-leckerbissen-klopp-kommentiert-salahs-vertragsverlaengerung-sueffisant_id_108941341.html",
+        "feed": {
+            "id": 254,
+            "title": "FOCUS"
+        },
+        "published": "2022-07-02 12:59:43 GMT",
+        "tags": [
+            {
+                "id": 2,
+                "name": "magazines"
+            },
+        ],
+        "summary": "Nach dem Abgang von Sadio Mané ist die Freude über die Bekanntgabe der Vertragsverlängerung von Superstar Mohamed Salah in Liverpool groß - auch bei Trainer Jürgen Klopp, was dem britischen „Mirror“ sauer aufstößt."
+    }
+]
+
+class Item extends React.Component {
+    render() {
+        return (
+            <article id={"article_" + this.props.item_id}>
+            <h2>
+            <span id={"title_" + this.props.item_id}>
+            <a href={this.props.item_link}>{this.props.item_title}</a>
+            </span>
+            </h2>
+
+            <p>
+            Source: <a href={"/steins-feed-re/feed?feed=" + this.props.feed_id}>{this.props.feed_title}</a>.
+
+            Published: {this.props.item_published}.
+
+            Tags:
+            <a href="/steins-feed-re/tag?tag=2">magazines</a>.
+            </p>
+
+            <div id={"summary_" + this.props.item_id}>
+            <p>{this.props.item_summary}</p>
+            </div>
+            </article>
+        )
+    }
+}
+
+root.render(
+    <Item
+        item_id = {articles[0].id}
+        item_title = {articles[0].title}
+        item_link = {articles[0].link}
+        item_published = {articles[0].published}
+        item_summary = {articles[0].summary}
+        feed_id = {articles[0].feed.id}
+        feed_title = {articles[0].feed.title}
+    />
+)
 
 // Tags.
 class TagsNav extends React.Component {
