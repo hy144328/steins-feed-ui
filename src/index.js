@@ -31,7 +31,7 @@ class NavRadioButton extends React.Component {
                 value = {this.props.value}
                 id = {this.props.id}
                 label = {this.props.value}
-                checked = {this.props.checked}
+                defaultChecked = {this.props.checked}
             />
         );
     }
