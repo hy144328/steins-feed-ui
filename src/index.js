@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import "./index.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 const sidenav = ReactDOM.createRoot(document.getElementById("sidenav"));
 
 class NavCheckBox extends React.Component {
@@ -63,6 +62,63 @@ function onCheckAll(event) {
 }
 
 // Articles.
+class Item extends React.Component {
+    render() {
+        return (
+            <article id={"article_" + this.props.item_id}>
+            <h2>
+            <span id={"title_" + this.props.item_id}>
+            <a href={this.props.item_link}>{this.props.item_title}</a>
+            </span>
+            </h2>
+
+            <p>
+            Source:
+            <a href={"/steins-feed-re/feed?feed=" + this.props.feed_id}>
+            {this.props.feed_title}
+            </a>.
+
+            Published: {this.props.item_published}.
+
+            Tags:
+            <a href="/steins-feed-re/tag?tag=2">magazines</a>.
+            </p>
+
+            <div id={"summary_" + this.props.item_id}>
+            <p>{this.props.item_summary}</p>
+            </div>
+            </article>
+        )
+    }
+}
+
+class ItemWall extends React.Component {
+    render() {
+        const item_cmpnts = [];
+        for (const item_it of articles) {
+            item_cmpnts.push(
+                <Item
+                    item_id = {item_it.id}
+                    item_title = {item_it.title}
+                    item_link = {item_it.link}
+                    item_published = {item_it.published}
+                    item_summary = {item_it.summary}
+                    feed_id = {item_it.feed.id}
+                    feed_title = {item_it.feed.title}
+                />
+            );
+        }
+
+        const wall_cmpnt = (
+            <main>
+            {item_cmpnts}
+            </main>
+        );
+
+        return wall_cmpnt;
+    }
+}
+
 const articles = [
     {
         "id": 5462487,
@@ -83,43 +139,8 @@ const articles = [
     }
 ]
 
-class Item extends React.Component {
-    render() {
-        return (
-            <article id={"article_" + this.props.item_id}>
-            <h2>
-            <span id={"title_" + this.props.item_id}>
-            <a href={this.props.item_link}>{this.props.item_title}</a>
-            </span>
-            </h2>
-
-            <p>
-            Source: <a href={"/steins-feed-re/feed?feed=" + this.props.feed_id}>{this.props.feed_title}</a>.
-
-            Published: {this.props.item_published}.
-
-            Tags:
-            <a href="/steins-feed-re/tag?tag=2">magazines</a>.
-            </p>
-
-            <div id={"summary_" + this.props.item_id}>
-            <p>{this.props.item_summary}</p>
-            </div>
-            </article>
-        )
-    }
-}
-
 root.render(
-    <Item
-        item_id = {articles[0].id}
-        item_title = {articles[0].title}
-        item_link = {articles[0].link}
-        item_published = {articles[0].published}
-        item_summary = {articles[0].summary}
-        feed_id = {articles[0].feed.id}
-        feed_title = {articles[0].feed.title}
-    />
+    <ItemWall />
 )
 
 // Tags.
@@ -244,7 +265,13 @@ class WallNav extends React.Component {
         const wall_cmpnts = [];
         for (const wall_it of ls_wall) {
             wall_cmpnts.push(
-                <NavRadioButton key={wall_it} name="wall" value={wall_it} id={"sidenav-wall-" + wall_it} checked={wall_it === "Classic"} />
+                <NavRadioButton
+                    key = {wall_it}
+                    name = "wall"
+                    value = {wall_it}
+                    id = {"sidenav-wall-" + wall_it}
+                    checked = {wall_it === "Classic"}
+                />
             );
         }
 
