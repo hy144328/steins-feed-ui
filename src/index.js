@@ -66,7 +66,7 @@ class LikeButton extends React.Component {
     render() {
         return (
             <button type="button" class="btn btn-outline-dark">
-            <i class="bi bi-skip-backward-fill"></i>
+            <i class="bi bi-hand-thumbs-up-fill"></i>
             </button>
         )
     }
