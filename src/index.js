@@ -63,25 +63,10 @@ function onCheckAll(event) {
 }
 
 // Articles.
-function like(event) {
-    this.setState({
-        liked: !this.state.liked
-    });
-}
-
 class LikeButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            liked: true
-        };
-
-        this.like = like.bind(this);
-    }
-
     render() {
         let button_variant = "outline-dark";
-        if (this.state.liked) {
+        if (this.props.liked == 1) {
             button_variant = "outline-primary";
         }
 
@@ -89,15 +74,30 @@ class LikeButton extends React.Component {
             <Button
                 type = "button"
                 variant = {button_variant}
-                onClick = {this.like}
+                onClick = {this.props.onClick}
             >
-            <i class="bi bi-hand-thumbs-up-fill"></i>
+            <i className="bi bi-hand-thumbs-up-fill"></i>
             </Button>
         )
     }
 }
 
+function onLikeClick() {
+    this.setState({
+        liked: (this.state.liked == 1) ? 0 : 1
+    });
+}
+
 class Item extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            liked: 0
+        }
+
+        this.onLikeClick = onLikeClick.bind(this);
+    }
+
     render() {
         return (
             <article id={"article_" + this.props.item_id}>
@@ -124,7 +124,10 @@ class Item extends React.Component {
             </div>
 
             <p>
-            <LikeButton />
+            <LikeButton
+                liked = {this.state.liked}
+                onClick = {this.onLikeClick}
+            />
             <LikeButton />
             </p>
             </article>
