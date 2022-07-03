@@ -64,11 +64,23 @@ function onCheckAll(event) {
 
 // Articles.
 class LikeButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            liked: true
+        };
+    }
+
     render() {
+        let button_variant = "outline-dark";
+        if (this.state.liked) {
+            button_variant = "outline-primary";
+        }
+
         return (
             <Button
                 type = "button"
-                variant = "outline-dark"
+                variant = {button_variant}
             >
             <i class="bi bi-hand-thumbs-up-fill"></i>
             </Button>
