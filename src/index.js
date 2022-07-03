@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./index.css"
 
@@ -65,9 +66,12 @@ function onCheckAll(event) {
 class LikeButton extends React.Component {
     render() {
         return (
-            <button type="button" class="btn btn-outline-dark">
+            <Button
+                type = "button"
+                variant = "outline-dark"
+            >
             <i class="bi bi-hand-thumbs-up-fill"></i>
-            </button>
+            </Button>
         )
     }
 }
