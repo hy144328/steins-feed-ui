@@ -62,6 +62,16 @@ function onCheckAll(event) {
 }
 
 // Articles.
+class LikeButton extends React.Component {
+    render() {
+        return (
+            <button type="button" class="btn btn-outline-dark">
+            <i class="bi bi-skip-backward-fill"></i>
+            </button>
+        )
+    }
+}
+
 class Item extends React.Component {
     render() {
         return (
@@ -87,6 +97,11 @@ class Item extends React.Component {
             <div id={"summary_" + this.props.item_id}>
             <p>{this.props.item_summary}</p>
             </div>
+
+            <p>
+            <LikeButton />
+            <LikeButton />
+            </p>
             </article>
         )
     }
