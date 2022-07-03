@@ -82,9 +82,34 @@ class LikeButton extends React.Component {
     }
 }
 
+class DislikeButton extends React.Component {
+    render() {
+        let button_variant = "outline-dark";
+        if (this.props.liked == -1) {
+            button_variant = "outline-primary";
+        }
+
+        return (
+            <Button
+                type = "button"
+                variant = {button_variant}
+                onClick = {this.props.onClick}
+            >
+            <i className="bi bi-hand-thumbs-down-fill"></i>
+            </Button>
+        )
+    }
+}
+
 function onLikeClick() {
     this.setState({
         liked: (this.state.liked == 1) ? 0 : 1
+    });
+}
+
+function onDislikeClick() {
+    this.setState({
+        liked: (this.state.liked == -1) ? 0 : -1
     });
 }
 
@@ -96,6 +121,7 @@ class Item extends React.Component {
         }
 
         this.onLikeClick = onLikeClick.bind(this);
+        this.onDislikeClick = onDislikeClick.bind(this);
     }
 
     render() {
@@ -128,7 +154,10 @@ class Item extends React.Component {
                 liked = {this.state.liked}
                 onClick = {this.onLikeClick}
             />
-            <LikeButton />
+            <DislikeButton
+                liked = {this.state.liked}
+                onClick = {this.onDislikeClick}
+            />
             </p>
             </article>
         )
