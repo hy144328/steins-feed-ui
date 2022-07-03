@@ -66,7 +66,7 @@ function onCheckAll(event) {
 class LikeButton extends React.Component {
     render() {
         let button_variant = "outline-dark";
-        if (this.props.liked == 1) {
+        if (this.props.liked === 1) {
             button_variant = "outline-primary";
         }
 
@@ -85,7 +85,7 @@ class LikeButton extends React.Component {
 class DislikeButton extends React.Component {
     render() {
         let button_variant = "outline-dark";
-        if (this.props.liked == -1) {
+        if (this.props.liked === -1) {
             button_variant = "outline-primary";
         }
 
@@ -103,13 +103,13 @@ class DislikeButton extends React.Component {
 
 function onLikeClick() {
     this.setState({
-        liked: (this.state.liked == 1) ? 0 : 1
+        liked: (this.state.liked === 1) ? 0 : 1
     });
 }
 
 function onDislikeClick() {
     this.setState({
-        liked: (this.state.liked == -1) ? 0 : -1
+        liked: (this.state.liked === -1) ? 0 : -1
     });
 }
 
