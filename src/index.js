@@ -63,12 +63,20 @@ function onCheckAll(event) {
 }
 
 // Articles.
+function like(event) {
+    this.setState({
+        liked: !this.state.liked
+    });
+}
+
 class LikeButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             liked: true
         };
+
+        this.like = like.bind(this);
     }
 
     render() {
@@ -81,6 +89,7 @@ class LikeButton extends React.Component {
             <Button
                 type = "button"
                 variant = {button_variant}
+                onClick = {this.like}
             >
             <i class="bi bi-hand-thumbs-up-fill"></i>
             </Button>
